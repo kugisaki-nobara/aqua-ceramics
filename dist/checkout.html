@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | AQUA CERAMICS LLP</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="bar-left">
+      <span>📍 Official Site: AQUA CERAMICS LLP</span>
+      <span>📞 Call Us: <a href="tel:7019254016">7019254016</a></span>
+      <span>✉️ Email: <a href="mailto:business@aquaceramics.in">business@aquaceramics.in</a></span>
+    </div>
+    <div class="bar-right">
+      <span>Tagline: <strong>DESIGNED FOR COMFORT BUILT FOR LIFE</strong></span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-mark">AC</div>
+        <div class="brand-info">
+          <span class="brand-name">AQUA CERAMICS LLP</span>
+          <span class="brand-tagline">DESIGNED FOR COMFORT BUILT FOR LIFE</span>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/about.html">About Us</a>
+        <a href="/products.html" class="nav-link">Shop / Catalogue</a>
+        <a href="/gallery.html" class="nav-link">Gallery</a>
+        <a href="/contact.html" class="nav-link">Contact Us</a>
+        <a href="/admin-login.html" class="nav-link" style="color: var(--primary-blue);">Admin Portal</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/cart.html" class="cart-icon-btn">
+          <span>🛒</span>
+          <span>Cart</span>
+          <span class="cart-badge">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Checkout Section -->
+  <section class="section-padding">
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <h1 style="font-size: 2rem; color: var(--primary-blue-deep); margin-bottom: 24px;">Secure Checkout</h1>
+
+      <form id="checkout-form" style="display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 40px;">
+        
+        <!-- Left Column: Customer & Shipping Information -->
+        <div style="background: #ffffff; padding: 30px; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+          <h3 style="color: var(--primary-blue-deep); margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+            1. Customer & Delivery Address
+          </h3>
+
+          <div class="form-group">
+            <label class="form-label" for="customer_name">Full Name *</label>
+            <input type="text" id="customer_name" class="form-control" placeholder="Enter your full name" required />
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label class="form-label" for="customer_phone">Phone Number *</label>
+              <input type="tel" id="customer_phone" class="form-control" placeholder="e.g. 7019254016" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="customer_email">Email Address</label>
+              <input type="email" id="customer_email" class="form-control" placeholder="name@domain.com" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="delivery_address">Delivery Address *</label>
+            <textarea id="delivery_address" class="form-control" placeholder="Building no., street address, landmark" required></textarea>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label class="form-label" for="city">City *</label>
+              <input type="text" id="city" class="form-control" placeholder="City" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="state">State *</label>
+              <input type="text" id="state" class="form-control" placeholder="State" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="postal_code">Postal Code *</label>
+              <input type="text" id="postal_code" class="form-control" placeholder="Postal Code" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="order_notes">Order Notes / Delivery Instructions (Optional)</label>
+            <textarea id="order_notes" class="form-control" placeholder="Specific delivery instructions or preferred time window" style="min-height: 70px;"></textarea>
+          </div>
+
+          <h3 style="color: var(--primary-blue-deep); margin: 30px 0 16px 0; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+            2. Payment Options
+          </h3>
+
+          <div class="form-group" style="background: var(--bg-main); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+            <label style="display: flex; align-items: center; gap: 12px; cursor: pointer; margin-bottom: 12px;">
+              <input type="radio" name="payment_method" value="COD" checked />
+              <div>
+                <strong>Cash on Delivery (COD) / Pay on Delivery</strong>
+                <div style="font-size: 0.85rem; color: var(--text-muted);">Pay upon inspect & delivery by Aqua Ceramics logistics team.</div>
+              </div>
+            </label>
+
+            <label style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+              <input type="radio" name="payment_method" value="RAZORPAY" />
+              <div>
+                <strong>Online Payment (UPI, Credit/Debit Card, Netbanking)</strong>
+                <div style="font-size: 0.85rem; color: var(--text-muted);">Configurable gateway mode with server signature verification.</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Right Column: Order Summary & Action -->
+        <div>
+          <div style="background: #ffffff; padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); position: sticky; top: 100px;">
+            <h3 style="color: var(--primary-blue-deep); margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">Summary</h3>
+            
+            <div id="checkout-order-summary">
+              <!-- Dynamically populated -->
+            </div>
+
+            <div style="display: flex; justify-content: space-between; margin-top: 20px; padding-top: 16px; border-top: 2px solid var(--border-color); font-size: 1.25rem; font-weight: 800; color: var(--primary-blue-deep);">
+              <span>Grand Total:</span>
+              <span id="checkout-grand-total">₹0</span>
+            </div>
+
+            <button type="submit" id="submit-order-btn" class="btn btn-primary btn-block" style="margin-top: 24px; padding: 14px;">
+              Confirm & Place Order
+            </button>
+
+            <div style="margin-top: 16px; font-size: 0.8rem; color: var(--text-light); text-align: center;">
+              🔒 Server-side stock & price verification enabled.
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <div class="brand-logo" style="margin-bottom: 16px;">
+          <div class="brand-mark" style="background: var(--primary-blue);">AC</div>
+          <div class="brand-info">
+            <span class="brand-name" style="color: #ffffff;">AQUA CERAMICS LLP</span>
+            <span class="brand-tagline" style="color: #94a3b8;">DESIGNED FOR COMFORT BUILT FOR LIFE</span>
+          </div>
+        </div>
+        <p style="font-size: 0.9rem;">Aqua Ceramics LLP is a premier manufacturer and supplier of modern sanitaryware products.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support Contact</h4>
+        <p style="margin-bottom: 8px;"><strong>Phone:</strong> <a href="tel:7019254016" style="color: #ffffff;">7019254016</a></p>
+        <p style="margin-bottom: 8px;"><strong>Email:</strong> <a href="mailto:business@aquaceramics.in" style="color: #ffffff;">business@aquaceramics.in</a></p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 AQUA CERAMICS LLP. All rights reserved.</div>
+      <div>Designed for Comfort, Built for Life.</div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/checkout.js"></script>
+</body>
+</html>

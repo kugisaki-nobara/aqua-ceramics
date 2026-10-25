@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanitaryware Gallery | AQUA CERAMICS LLP</title>
+  <meta name="description" content="Explore Aqua Ceramics LLP's photo gallery showcasing modern sanitaryware installations, wall-hung EWCs, table-top wash basins, and luxury architectural bathroom concepts.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      background: #ffffff;
+      transition: var(--transition);
+    }
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+    .gallery-caption {
+      padding: 16px;
+      background: #ffffff;
+    }
+    .gallery-caption h4 {
+      color: var(--primary-blue-deep);
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+    .gallery-caption p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.9);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .lightbox-modal.active {
+      display: flex;
+    }
+    .lightbox-content {
+      max-width: 900px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      position: relative;
+    }
+    .lightbox-content img {
+      width: 100%;
+      max-height: 550px;
+      object-fit: cover;
+    }
+    .lightbox-info {
+      padding: 20px;
+    }
+    .close-lightbox {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      background: rgba(0,0,0,0.6);
+      color: #ffffff;
+      border: none;
+      font-size: 1.5rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="bar-left">
+      <span>📍 Official Site: AQUA CERAMICS LLP</span>
+      <span>📞 Call Us: <a href="tel:7019254016">7019254016</a></span>
+      <span>✉️ Email: <a href="mailto:business@aquaceramics.in">business@aquaceramics.in</a></span>
+    </div>
+    <div class="bar-right">
+      <span>Tagline: <strong>DESIGNED FOR COMFORT BUILT FOR LIFE</strong></span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-mark">AC</div>
+        <div class="brand-info">
+          <span class="brand-name">AQUA CERAMICS LLP</span>
+          <span class="brand-tagline">DESIGNED FOR COMFORT BUILT FOR LIFE</span>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/about.html" class="nav-link">About Us</a>
+        <a href="/products.html" class="nav-link">Shop / Catalogue</a>
+        <a href="/gallery.html" class="nav-link active">Gallery</a>
+        <a href="/contact.html" class="nav-link">Contact Us</a>
+        <a href="/admin-login.html" class="nav-link" style="color: var(--primary-blue);">Admin Portal</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/cart.html" class="cart-icon-btn">
+          <span>🛒</span>
+          <span>Cart</span>
+          <span class="cart-badge">0</span>
+        </a>
+        <button class="mobile-menu-toggle" aria-label="Toggle Navigation Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Banner -->
+  <section style="background: linear-gradient(135deg, #0f4c81 0%, #0369a1 100%); color: #ffffff; padding: 40px 24px;">
+    <div style="max-width: 1280px; margin: 0 auto; text-align: center;">
+      <h1 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 8px;">Sanitaryware Installation Gallery</h1>
+      <p style="color: #e0f2fe;">Visual inspirations featuring Aqua Ceramics LLP products in modern architectural environments.</p>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="section-padding">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div class="gallery-grid">
+        
+        <div class="gallery-item" onclick="openLightbox('/images/hero_sanitaryware_banner.jpg', 'Architectural Suite', 'Rimless wall-hung EWC paired with table-top basin and indirect vanity lighting.')">
+          <img src="/images/hero_sanitaryware_banner.jpg" alt="Architectural Master Bathroom Suite" />
+          <div class="gallery-caption">
+            <h4>Architectural Master Suite</h4>
+            <p>Rimless Wall-Hung EWC & Countertop Basin</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('/images/category_ewc_toilets.jpg', 'Aqua Luxe Rimless EWC', 'Vitreous china wall-hung closet with soft-close seat on blue tile backdrop.')">
+          <img src="/images/category_ewc_toilets.jpg" alt="Aqua Luxe Rimless EWC Installation" />
+          <div class="gallery-caption">
+            <h4>Aqua Luxe Rimless EWC</h4>
+            <p>Wall-Hung Toilet with Soft-Close Cover</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('/images/category_wash_basins.jpg', 'Aqua Crystal Table-Top Basin', 'Deep circular table-top basin mounted on solid timber countertop.')">
+          <img src="/images/category_wash_basins.jpg" alt="Aqua Crystal Table-Top Wash Basin Installation" />
+          <div class="gallery-caption">
+            <h4>Aqua Crystal Table-Top Basin</h4>
+            <p>Designer Vessel Basin with Chrome Faucet</p>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('/images/category_other_sanitaryware.jpg', 'Concealed Cistern Installation', 'In-wall concealed dual-flush cistern with chrome actuator plate.')">
+          <img src="/images/category_other_sanitaryware.jpg" alt="Concealed Cistern Wall Installation" />
+          <div class="gallery-caption">
+            <h4>Concealed Flush System</h4>
+            <p>In-wall steel frame dual-flush cistern</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal Container -->
+  <div id="lightbox-modal" class="lightbox-modal">
+    <div class="lightbox-content">
+      <button class="close-lightbox" onclick="closeLightbox()">×</button>
+      <img id="lightbox-img" src="" alt="Enlarged gallery view" />
+      <div class="lightbox-info">
+        <h3 id="lightbox-title" style="color: var(--primary-blue-deep); margin-bottom: 6px;"></h3>
+        <p id="lightbox-desc" style="color: var(--text-muted); font-size: 0.95rem;"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <div class="brand-logo" style="margin-bottom: 16px;">
+          <div class="brand-mark" style="background: var(--primary-blue);">AC</div>
+          <div class="brand-info">
+            <span class="brand-name" style="color: #ffffff;">AQUA CERAMICS LLP</span>
+            <span class="brand-tagline" style="color: #94a3b8;">DESIGNED FOR COMFORT BUILT FOR LIFE</span>
+          </div>
+        </div>
+        <p style="font-size: 0.9rem;">Aqua Ceramics LLP is a premier manufacturer and supplier of modern sanitaryware products.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about.html">About Us</a></li>
+          <li><a href="/products.html">Shop / Catalogue</a></li>
+          <li><a href="/gallery.html">Gallery</a></li>
+          <li><a href="/contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Information</h4>
+        <p style="margin-bottom: 8px;"><strong>Phone:</strong> <a href="tel:7019254016" style="color: #ffffff;">7019254016</a></p>
+        <p style="margin-bottom: 8px;"><strong>Email:</strong> <a href="mailto:business@aquaceramics.in" style="color: #ffffff;">business@aquaceramics.in</a></p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 AQUA CERAMICS LLP. All rights reserved.</div>
+      <div>Designed for Comfort, Built for Life.</div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script>
+    function openLightbox(imgSrc, title, desc) {
+      document.getElementById('lightbox-img').src = imgSrc;
+      document.getElementById('lightbox-title').textContent = title;
+      document.getElementById('lightbox-desc').textContent = desc;
+      document.getElementById('lightbox-modal').classList.add('active');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox-modal').classList.remove('active');
+    }
+
+    document.getElementById('lightbox-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'lightbox-modal') closeLightbox();
+    });
+  </script>
+</body>
+</html>

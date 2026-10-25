@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | AQUA CERAMICS LLP</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header" style="background: #0f172a; color: #ffffff;">
+    <div class="header-container">
+      <div class="brand-logo">
+        <div class="brand-mark" style="background: var(--primary-blue);">AC</div>
+        <div class="brand-info">
+          <span class="brand-name" style="color: #ffffff;">AQUA CERAMICS LLP</span>
+          <span class="brand-tagline" style="color: #94a3b8;">ADMINISTRATION DASHBOARD</span>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 16px; align-items: center;">
+        <a href="/" target="_blank" style="color: #e0f2fe; font-weight: 600; font-size: 0.9rem;">View Public Website ↗</a>
+        <button onclick="AdminModule.logout()" class="btn btn-outline btn-sm" style="border-color: #475569; color: #ffffff; background: transparent;">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Admin Dashboard Section -->
+  <section class="section-padding">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      
+      <!-- Dashboard Section Header -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <div>
+          <h1 style="font-size: 2rem; color: var(--primary-blue-deep);">Store Administration Portal</h1>
+          <p style="color: var(--text-muted);">Manage customer orders, product catalog inventory, and incoming business enquiries.</p>
+        </div>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div style="display: flex; gap: 10px; margin-bottom: 24px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
+        <button id="tab-orders-btn" class="btn btn-primary btn-sm" onclick="switchAdminTab('orders')">Customer Orders</button>
+        <button id="tab-enquiries-btn" class="btn btn-outline btn-sm" onclick="switchAdminTab('enquiries')">Enquiries</button>
+        <button id="tab-products-btn" class="btn btn-outline btn-sm" onclick="switchAdminTab('products')">Product Inventory</button>
+      </div>
+
+      <!-- Tab 1: Orders Management -->
+      <div id="tab-orders-content" style="background: #ffffff; padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+        <h3 style="color: var(--primary-blue-deep); margin-bottom: 16px;">Orders Overview</h3>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+            <thead>
+              <tr style="background: var(--bg-main); border-bottom: 2px solid var(--border-color);">
+                <th style="padding: 12px;">Order Ref</th>
+                <th style="padding: 12px;">Customer Details</th>
+                <th style="padding: 12px;">Total Amount</th>
+                <th style="padding: 12px;">Payment Method</th>
+                <th style="padding: 12px;">Order Status</th>
+                <th style="padding: 12px;">Date</th>
+              </tr>
+            </thead>
+            <tbody id="admin-orders-list">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 2: Enquiries Management -->
+      <div id="tab-enquiries-content" style="display: none; background: #ffffff; padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+        <h3 style="color: var(--primary-blue-deep); margin-bottom: 16px;">Customer & Dealership Enquiries</h3>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+            <thead>
+              <tr style="background: var(--bg-main); border-bottom: 2px solid var(--border-color);">
+                <th style="padding: 12px;">Contact Info</th>
+                <th style="padding: 12px;">Subject of Interest</th>
+                <th style="padding: 12px;">Message</th>
+                <th style="padding: 12px;">Status</th>
+                <th style="padding: 12px;">Date</th>
+              </tr>
+            </thead>
+            <tbody id="admin-enquiries-list">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 3: Products Management -->
+      <div id="tab-products-content" style="display: none; background: #ffffff; padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <h3 style="color: var(--primary-blue-deep);">Product Inventory</h3>
+          <!-- Add Product Button (modal trigger or quick form) -->
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+            <thead>
+              <tr style="background: var(--bg-main); border-bottom: 2px solid var(--border-color);">
+                <th style="padding: 12px;">Code</th>
+                <th style="padding: 12px;">Product Name</th>
+                <th style="padding: 12px;">Category</th>
+                <th style="padding: 12px;">Price</th>
+                <th style="padding: 12px;">Stock</th>
+                <th style="padding: 12px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-products-list">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/admin.js"></script>
+  <script>
+    function switchAdminTab(tabName) {
+      const tabs = ['orders', 'enquiries', 'products'];
+      tabs.forEach(t => {
+        const content = document.getElementById(`tab-${t}-content`);
+        const btn = document.getElementById(`tab-${t}-btn`);
+        if (content && btn) {
+          if (t === tabName) {
+            content.style.display = 'block';
+            btn.className = 'btn btn-primary btn-sm';
+          } else {
+            content.style.display = 'none';
+            btn.className = 'btn btn-outline btn-sm';
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>

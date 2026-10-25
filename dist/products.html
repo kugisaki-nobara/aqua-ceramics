@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanitaryware Product Catalogue | AQUA CERAMICS LLP</title>
+  <meta name="description" content="Browse Aqua Ceramics LLP's complete sanitaryware product catalogue: Western Toilets, EWC, Table Top Basins, Pedestal Basins, and Concealed Cisterns.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="bar-left">
+      <span>📍 Official Site: AQUA CERAMICS LLP</span>
+      <span>📞 Call Us: <a href="tel:7019254016">7019254016</a></span>
+      <span>✉️ Email: <a href="mailto:business@aquaceramics.in">business@aquaceramics.in</a></span>
+    </div>
+    <div class="bar-right">
+      <span>Tagline: <strong>DESIGNED FOR COMFORT BUILT FOR LIFE</strong></span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-mark">AC</div>
+        <div class="brand-info">
+          <span class="brand-name">AQUA CERAMICS LLP</span>
+          <span class="brand-tagline">DESIGNED FOR COMFORT BUILT FOR LIFE</span>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/about.html" class="nav-link">About Us</a>
+        <a href="/products.html" class="nav-link active">Shop / Catalogue</a>
+        <a href="/gallery.html" class="nav-link">Gallery</a>
+        <a href="/contact.html" class="nav-link">Contact Us</a>
+        <a href="/admin-login.html" class="nav-link" style="color: var(--primary-blue);">Admin Portal</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/cart.html" class="cart-icon-btn">
+          <span>🛒</span>
+          <span>Cart</span>
+          <span class="cart-badge">0</span>
+        </a>
+        <button class="mobile-menu-toggle" aria-label="Toggle Navigation Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section style="background: linear-gradient(135deg, #0f4c81 0%, #0369a1 100%); color: #ffffff; padding: 40px 24px;">
+    <div style="max-width: 1280px; margin: 0 auto; text-align: center;">
+      <h1 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 8px;">Sanitaryware Product Catalogue</h1>
+      <p style="color: #e0f2fe;">Explore high-performance ceramic closets, wash basins, and architectural bathroom fittings.</p>
+    </div>
+  </section>
+
+  <!-- Filters & Search Toolbar -->
+  <section class="section-padding" style="padding-bottom: 20px; background: #ffffff; border-bottom: 1px solid var(--border-color);">
+    <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between;">
+      
+      <!-- Category Filter Buttons -->
+      <div id="category-filter-container" style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <!-- Category buttons rendered dynamically -->
+      </div>
+
+      <!-- Search & Sort Controls -->
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+        <input type="text" id="product-search-input" placeholder="Search by name or code (e.g. AC-EWC)..." class="form-control" style="width: 260px;" />
+        <select id="product-sort-select" class="form-control" style="width: 180px;">
+          <option value="default">Sort by: Default</option>
+          <option value="price_asc">Price: Low to High</option>
+          <option value="price_desc">Price: High to Low</option>
+          <option value="name_asc">Name: A to Z</option>
+        </select>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Products Grid Section -->
+  <section class="section-padding">
+    <div id="products-grid-container" class="product-grid">
+      <!-- Dynamically populated by products.js -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <div class="brand-logo" style="margin-bottom: 16px;">
+          <div class="brand-mark" style="background: var(--primary-blue);">AC</div>
+          <div class="brand-info">
+            <span class="brand-name" style="color: #ffffff;">AQUA CERAMICS LLP</span>
+            <span class="brand-tagline" style="color: #94a3b8;">DESIGNED FOR COMFORT BUILT FOR LIFE</span>
+          </div>
+        </div>
+        <p style="font-size: 0.9rem;">Aqua Ceramics LLP is a premier manufacturer and supplier of modern sanitaryware products.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about.html">About Us</a></li>
+          <li><a href="/products.html">Shop / Catalogue</a></li>
+          <li><a href="/gallery.html">Gallery</a></li>
+          <li><a href="/contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Information</h4>
+        <p style="margin-bottom: 8px;"><strong>Phone:</strong> <a href="tel:7019254016" style="color: #ffffff;">7019254016</a></p>
+        <p style="margin-bottom: 8px;"><strong>Email:</strong> <a href="mailto:business@aquaceramics.in" style="color: #ffffff;">business@aquaceramics.in</a></p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Dealership & Support</h4>
+        <p style="font-size: 0.9rem;">For architectural project quotes and dealer enquiries, call our commercial desk at <strong>7019254016</strong>.</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 AQUA CERAMICS LLP. All rights reserved.</div>
+      <div>Designed for Comfort, Built for Life.</div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/products.js"></script>
+  <script>
+    // Handle category query parameter from URL
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const catParam = urlParams.get('category');
+      if (catParam) {
+        setTimeout(() => {
+          ProductModule.filterCategory(catParam);
+        }, 300);
+      }
+    });
+  </script>
+</body>
+</html>
