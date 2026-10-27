@@ -94,11 +94,14 @@ export const EnquiryDrawer: React.FC = () => {
       {!isOpen && (
         <button
           onClick={() => openEnquiry({ type: 'General' })}
-          className="fixed bottom-6 right-6 z-40 bg-gradient-to-r from-sky-700 to-sky-900 text-white font-bold text-xs sm:text-sm px-5 py-3.5 rounded-full shadow-2xl hover:shadow-sky-500/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-2.5 border border-sky-400/30 group"
+          className="fixed bottom-6 right-6 z-40 glass-button-primary font-bold text-xs sm:text-sm px-5 py-3.5 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2.5 group cursor-pointer"
           title="Open Business Enquiry Panel"
         >
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-          <MessageSquare className="w-4 h-4 text-sky-200 group-hover:rotate-12 transition-transform" />
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
+          </span>
+          <MessageSquare className="w-4 h-4 text-white group-hover:rotate-12 transition-transform" />
           <span>Quick Business Enquiry</span>
         </button>
       )}
@@ -106,68 +109,83 @@ export const EnquiryDrawer: React.FC = () => {
       {/* Slide-out Drawer & Overlay */}
       {isOpen && (
         <div className="fixed inset-0 z-50 overflow-hidden">
-          {/* Backdrop */}
+          {/* Backdrop with Frosted Blur */}
           <div 
             onClick={closeEnquiry}
-            className="absolute inset-0 bg-slate-950/70 backdrop-blur-sm transition-opacity animate-in fade-in duration-200"
+            className="absolute inset-0 bg-[#1b3d54]/60 backdrop-blur-md transition-opacity animate-in fade-in duration-300"
           />
 
           <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-            <div className="w-screen max-w-md sm:max-w-lg bg-white shadow-2xl flex flex-col border-l border-slate-200 animate-in slide-in-from-right duration-300">
+            <div className="w-screen max-w-md sm:max-w-lg bg-[#fef4e9]/90 backdrop-blur-2xl shadow-2xl flex flex-col border-l border-white/80 animate-in slide-in-from-right duration-300">
               
-              {/* Drawer Header */}
-              <div className="bg-gradient-to-r from-sky-900 via-sky-800 to-slate-900 text-white p-6 relative">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-                    <span className="text-[11px] font-extrabold uppercase tracking-widest text-sky-300">
+              {/* Drawer Header with Frosted Glass Look */}
+              <div className="relative p-6 bg-gradient-to-br from-[#3d84ae] via-[#2d6f96] to-[#1b3d54] text-white border-b border-white/20 shadow-lg overflow-hidden">
+                <div className="absolute -top-12 -right-12 w-36 h-36 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+                
+                <div className="flex items-center justify-between relative z-10">
+                  <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-sky-100">
                       Commercial Desk
                     </span>
                   </div>
                   <button
                     onClick={closeEnquiry}
-                    className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+                    className="p-1.5 rounded-full text-white/80 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 transition-all cursor-pointer"
                   >
                     <X className="w-5 h-5" />
                   </button>
                 </div>
 
-                <h2 className="text-xl sm:text-2xl font-serif font-bold mt-2 text-white">
-                  Business & Project Enquiry
-                </h2>
-                <p className="text-xs text-sky-200 mt-1 leading-relaxed">
+                <div className="flex items-center gap-3 mt-3 relative z-10">
+                  <img 
+                    src="/images/logo.jpg" 
+                    alt="Aqua Ceramics" 
+                    className="w-10 h-10 rounded-xl object-contain bg-white/90 p-0.5 border border-white/40 shadow-sm shrink-0" 
+                  />
+                  <div>
+                    <h2 className="text-xl sm:text-2xl font-serif font-bold text-white tracking-tight">
+                      Business & Project Enquiry
+                    </h2>
+                    <p className="text-[11px] text-sky-100 mt-0.5 font-medium leading-tight">
+                      Direct connection to Aqua Ceramics technical sales & supply team
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-xs text-sky-100/90 mt-2.5 leading-relaxed relative z-10 font-light">
                   Request wholesale quotations, CAD specification sheets, dealership terms, or 3D bathroom suite configurations.
                 </p>
               </div>
 
               {/* Drawer Content Body */}
-              <div className="flex-1 overflow-y-auto p-6 space-y-6">
+              <div className="flex-1 overflow-y-auto p-6 space-y-5">
                 {success ? (
                   <div className="text-center py-12 space-y-4 animate-in zoom-in-95 duration-200">
-                    <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-md">
+                    <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-600 flex items-center justify-center mx-auto shadow-inner border border-emerald-500/30">
                       <CheckCircle2 className="w-10 h-10" />
                     </div>
-                    <h3 className="text-xl font-bold font-serif text-slate-900">
+                    <h3 className="text-xl font-bold font-serif text-[#1b3d54]">
                       Enquiry Registered Successfully
                     </h3>
                     <p className="text-xs text-slate-600 max-w-sm mx-auto leading-relaxed">
-                      Thank you for contacting Aqua Ceramics LLP. Our technical commercial desk has received your request and will follow up with you directly.
+                      Thank you for contacting Aqua Ceramics LLP. Our technical commercial desk has received your request and will follow up with you promptly.
                     </p>
                     {leadId && (
-                      <div className="inline-block bg-slate-100 border border-slate-200 text-slate-700 text-xs font-mono font-bold px-4 py-2 rounded-lg">
+                      <div className="inline-block bg-white/80 backdrop-blur-md border border-[#3d84ae]/30 text-[#1b3d54] text-xs font-mono font-bold px-4 py-2 rounded-xl shadow-sm">
                         Lead Reference: #{leadId}
                       </div>
                     )}
-                    <div className="pt-4 flex flex-col gap-2">
+                    <div className="pt-4 flex flex-col gap-2.5">
                       <button
                         onClick={closeEnquiry}
-                        className="w-full py-3 bg-sky-700 hover:bg-sky-800 text-white rounded-xl text-xs font-bold transition-colors"
+                        className="w-full py-3 glass-button-primary text-white rounded-xl text-xs font-bold transition-all shadow-md cursor-pointer"
                       >
                         Done / Continue Exploring
                       </button>
                       <a
                         href="tel:7019254016"
-                        className="w-full py-2.5 text-center text-xs font-bold text-sky-700 hover:underline flex items-center justify-center gap-1.5"
+                        className="w-full py-2.5 text-center text-xs font-bold text-[#3d84ae] hover:underline flex items-center justify-center gap-1.5"
                       >
                         <Phone className="w-3.5 h-3.5" /> Direct Call: 7019254016
                       </a>
@@ -176,21 +194,21 @@ export const EnquiryDrawer: React.FC = () => {
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
                     {error && (
-                      <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 text-xs rounded-xl font-medium">
+                      <div className="p-3 bg-rose-500/10 border border-rose-300 text-rose-700 text-xs rounded-xl font-medium backdrop-blur-md">
                         {error}
                       </div>
                     )}
 
                     {/* Enquiry Type Selector */}
                     <div>
-                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs font-bold text-[#1b3d54] uppercase tracking-wider mb-1.5">
                         Enquiry Purpose *
                       </label>
                       <select
                         name="enquiry_type"
                         value={formData.enquiry_type}
                         onChange={handleChange}
-                        className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold text-slate-800 focus:outline-sky-600 focus:bg-white"
+                        className="w-full px-3.5 py-2.5 glass-input rounded-xl text-xs font-semibold text-slate-800 focus:outline-[#3d84ae]"
                       >
                         <option value="Project Quotation">Architectural & Project Bulk Quotation</option>
                         <option value="Dealership Request">Showroom & Dealer Distributorship</option>
@@ -203,7 +221,7 @@ export const EnquiryDrawer: React.FC = () => {
                     {/* Contact Info (Name + Phone) */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        <label className="block text-xs font-semibold text-[#1b3d54] mb-1">
                           Your Name *
                         </label>
                         <input
@@ -213,12 +231,12 @@ export const EnquiryDrawer: React.FC = () => {
                           value={formData.name}
                           onChange={handleChange}
                           placeholder="e.g. Ar. Vikram Roy"
-                          className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-xs text-slate-900 focus:outline-sky-600 focus:bg-white"
+                          className="w-full px-3.5 py-2.5 glass-input rounded-xl text-xs text-slate-900 focus:outline-[#3d84ae]"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        <label className="block text-xs font-semibold text-[#1b3d54] mb-1">
                           Phone Number *
                         </label>
                         <input
@@ -228,7 +246,7 @@ export const EnquiryDrawer: React.FC = () => {
                           value={formData.phone}
                           onChange={handleChange}
                           placeholder="10-digit mobile number"
-                          className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-xs text-slate-900 focus:outline-sky-600 focus:bg-white"
+                          className="w-full px-3.5 py-2.5 glass-input rounded-xl text-xs text-slate-900 focus:outline-[#3d84ae]"
                         />
                       </div>
                     </div>
@@ -236,7 +254,7 @@ export const EnquiryDrawer: React.FC = () => {
                     {/* Email + City */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        <label className="block text-xs font-semibold text-[#1b3d54] mb-1">
                           Email Address
                         </label>
                         <input
@@ -245,12 +263,12 @@ export const EnquiryDrawer: React.FC = () => {
                           value={formData.email}
                           onChange={handleChange}
                           placeholder="name@company.com"
-                          className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-xs text-slate-900 focus:outline-sky-600 focus:bg-white"
+                          className="w-full px-3.5 py-2.5 glass-input rounded-xl text-xs text-slate-900 focus:outline-[#3d84ae]"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        <label className="block text-xs font-semibold text-[#1b3d54] mb-1">
                           City / State
                         </label>
                         <input
@@ -259,14 +277,14 @@ export const EnquiryDrawer: React.FC = () => {
                           value={formData.city}
                           onChange={handleChange}
                           placeholder="e.g. Bengaluru, Karnataka"
-                          className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-xs text-slate-900 focus:outline-sky-600 focus:bg-white"
+                          className="w-full px-3.5 py-2.5 glass-input rounded-xl text-xs text-slate-900 focus:outline-[#3d84ae]"
                         />
                       </div>
                     </div>
 
                     {/* Company / Firm Name */}
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                      <label className="block text-xs font-semibold text-[#1b3d54] mb-1">
                         Company / Firm / Studio Name <span className="text-slate-400 font-normal">(Optional)</span>
                       </label>
                       <input
@@ -275,13 +293,13 @@ export const EnquiryDrawer: React.FC = () => {
                         value={formData.company_name}
                         onChange={handleChange}
                         placeholder="e.g. Skyline Builders / Studio Design LLP"
-                        className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-xs text-slate-900 focus:outline-sky-600 focus:bg-white"
+                        className="w-full px-3.5 py-2.5 glass-input rounded-xl text-xs text-slate-900 focus:outline-[#3d84ae]"
                       />
                     </div>
 
                     {/* Product of Interest */}
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                      <label className="block text-xs font-semibold text-[#1b3d54] mb-1">
                         Sanitaryware Model / Fixture of Interest
                       </label>
                       <input
@@ -290,13 +308,13 @@ export const EnquiryDrawer: React.FC = () => {
                         value={formData.product_of_interest}
                         onChange={handleChange}
                         placeholder="e.g. AC-EWC-101 Wall-Hung Toilet / 3D Bathroom Suite"
-                        className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-xs text-slate-900 focus:outline-sky-600 focus:bg-white"
+                        className="w-full px-3.5 py-2.5 glass-input rounded-xl text-xs text-slate-900 focus:outline-[#3d84ae]"
                       />
                     </div>
 
                     {/* Message / Requirements */}
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                      <label className="block text-xs font-semibold text-[#1b3d54] mb-1">
                         Project Scope / Requirements *
                       </label>
                       <textarea
@@ -306,24 +324,26 @@ export const EnquiryDrawer: React.FC = () => {
                         value={formData.message}
                         onChange={handleChange}
                         placeholder="Describe your project, required quantity, installation timeline, or custom architectural specifications..."
-                        className="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-xs text-slate-900 focus:outline-sky-600 focus:bg-white resize-none"
+                        className="w-full px-3.5 py-2.5 glass-input rounded-xl text-xs text-slate-900 focus:outline-[#3d84ae] resize-none"
                       />
                     </div>
 
-                    {/* Direct Contact Banner */}
-                    <div className="bg-sky-50 p-3.5 rounded-xl border border-sky-100 flex items-center justify-between text-xs text-sky-950">
+                    {/* Direct Contact Banner Glass */}
+                    <div className="glass-panel p-3.5 rounded-xl border border-white/60 flex items-center justify-between text-xs text-[#1b3d54] shadow-sm">
                       <div className="flex items-center gap-2">
-                        <Phone className="w-4 h-4 text-sky-700 shrink-0" />
-                        <span>Direct Desk: <strong>7019254016</strong></span>
+                        <Phone className="w-4 h-4 text-[#3d84ae] shrink-0" />
+                        <span>Direct Commercial Desk: <strong>7019254016</strong></span>
                       </div>
-                      <span className="text-[11px] text-sky-700 font-medium">Quick Support</span>
+                      <span className="text-[11px] text-[#3d84ae] font-semibold bg-white/70 px-2 py-0.5 rounded-md border border-white/60">
+                        Priority
+                      </span>
                     </div>
 
                     {/* Submit Button */}
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full py-3.5 bg-gradient-to-r from-sky-700 to-sky-900 hover:from-sky-800 hover:to-sky-950 text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition-all disabled:opacity-50"
+                      className="w-full py-3.5 glass-button-primary text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition-all disabled:opacity-50 cursor-pointer"
                     >
                       {loading ? (
                         <>
@@ -341,7 +361,7 @@ export const EnquiryDrawer: React.FC = () => {
               </div>
 
               {/* Drawer Footer */}
-              <div className="p-4 bg-slate-50 border-t border-slate-200 text-center text-[11px] text-slate-500">
+              <div className="p-4 bg-white/40 backdrop-blur-md border-t border-white/60 text-center text-[11px] text-slate-600 font-medium">
                 AQUA CERAMICS LLP • DESIGNED FOR COMFORT BUILT FOR LIFE
               </div>
 

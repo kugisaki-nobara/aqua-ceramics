@@ -1,4 +1,4 @@
-# AQUA CERAMICS LLP — Enterprise E-Commerce & Virtual Architectural Showroom
+# AQUA CERAMICS LLP — Architectural Showcase & 3D Bathroom Studio
 
 [![Node.js](https://img.shields.io/badge/Node.js-v20%2B%20%7C%20v24-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 [![React](https://img.shields.io/badge/React-19.0.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
@@ -7,47 +7,51 @@
 [![Three.js](https://img.shields.io/badge/Three.js-WebGL%203D-black?logo=three.js&logoColor=white)](https://threejs.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![SQLite](https://img.shields.io/badge/Database-SQLite%20(node%3Asqlite)-003B57?logo=sqlite&logoColor=white)](https://nodejs.org/api/sqlite.html)
-[![License](https://img.shields.io/badge/License-Proprietary-red)](#)
+[![Design](https://img.shields.io/badge/Style-Glassmorphism-3d84ae)](#)
 
 > **"DESIGNED FOR COMFORT BUILT FOR LIFE"**  
-> Premium Sanitaryware, Vitrified Architectural Ceramic Solutions & B2B Commercial Procurement Suite.
+> Premium Sanitaryware, Vitreous Architectural Ceramic Solutions & B2B Commercial Lead Generation Hub.
 
 ---
 
 ## 📌 Table of Contents
 
 - [Overview](#-overview)
+- [Design System & Aesthetics: Glassmorphism](#-design-system--aesthetics-glassmorphism)
 - [Architecture & Tech Stack](#-architecture--tech-stack)
 - [Key Features](#-key-features)
-  - [3D Virtual Showroom](#1-interactive-3d-webgl-bathroom-showroom)
-  - [Product Catalogue & Specifications](#2-architectural-catalogue--specifications)
-  - [E-Commerce & Checkout](#3-e-commerce--cart-engine)
-  - [Consignment Tracking](#4-real-time-6-stage-consignment-tracking)
-  - [B2B Commercial Quotations](#5-b2b-commercial-quotations)
-  - [Administration Suite](#6-enterprise-admin-portal)
-- [Project Directory Structure](#-project-directory-structure)
-- [Getting Started](#-getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Environment Configuration](#environment-configuration)
-  - [Running the App](#running-the-app)
+  - [Interactive 3D WebGL Bathroom Studio](#1-interactive-3d-webgl-bathroom-studio)
+  - [Commercial Enquiry & Lead Generation Drawer](#2-commercial-enquiry--lead-generation-drawer)
+  - [Architectural Catalogue & Specifications](#3-architectural-catalogue--specifications)
+  - [Staff CRM & Leads Control Center](#4-staff-crm--leads-control-center)
+- [How to Run It Yourself](#-how-to-run-it-yourself)
 - [API Reference](#-api-reference)
-- [Demo Credentials & Test Data](#-demo-credentials--test-data)
-- [Testing & Quality Assurance](#-testing--quality-assurance)
 - [Corporate Identity](#-corporate-identity)
 
 ---
 
 ## 🏛️ Overview
 
-**Aqua Ceramics LLP** is an end-to-end web platform designed for luxury sanitaryware retail, institutional tenders, architectural projects, and channel partner distribution.
+**Aqua Ceramics LLP** is an architectural digital showcase and lead generation platform built specifically for luxury sanitaryware distribution, architectural consultants, hotel builders, and commercial project inquiries.
 
-The solution integrates:
-- **Interactive Three.js 3D WebGL Bathroom Showroom**: Real-time camera orbital controls, material finish variations (Alpine White, Matte Black, Gloss Ivory), and interactive hot-spot inspection.
-- **Architectural Catalogue**: Search by model codes (e.g. `AQ-EWC-101`), load tolerances up to 400kg, nano-glaze finish specifications, and automated spec-sheet generation.
-- **B2B Quotation Management**: Direct RFP quotation submission with automated reference numbering (`AQUA-QT-YYYYMMDD-XXXX`).
-- **Live 6-Stage Consignment Tracking**: Milestone progress tracking with carrier notes and audit logs (`AQUA-ORD-YYYYMMDD-XXXX`).
-- **Operational Admin Suite**: Complete back-office management for products, inventory stock, order dispatches, quotation pricing, and dealership applications.
+The solution features:
+- **Glassmorphism Aesthetic**: Multi-layered translucent frosted surfaces (`backdrop-filter: blur()`), glowing specular borders, ambient floating orbs, and official brand colors (`#3d84ae` Ceramic Ocean Blue and `#fef4e9` Porcelain Cream).
+- **Official Brand Logo Integration**: High-resolution brand mark deployed across headers, footers, favicons, enquiry drawers, and admin portals.
+- **Interactive Three.js 3D WebGL Bathroom Studio**: Real-time camera orbital controls, material finish variations (Alpine White, Matte Black, Gloss Ivory, Slate), and interactive fixture hot-spot inspection.
+- **B2B Commercial Enquiry Engine**: Floating action drawer and direct enquiry triggers capturing leads into an SQLite CRM backend.
+- **Staff CRM & Leads Control Center**: Secure staff dashboard (`/admin`) for inspecting incoming project quotations, dealership applications, and client specifications.
+
+---
+
+## 🎨 Design System & Aesthetics: Glassmorphism
+
+The platform is designed with a modern **Glassmorphism** visual hierarchy:
+- **Color Palette**:
+  - Primary Brand Blue: `#3d84ae`
+  - Deep Navy Accent: `#1b3d54` / `#265979`
+  - Porcelain Cream Background: `#fef4e9`
+- **Frosted Translucent Layers**: High-precision `backdrop-blur-2xl` with subtle white borders (`border-white/70` and `border-white/20`).
+- **Ambient Lighting**: Floating blurred gradient glow orbs in the background that shimmer behind cards and navigation.
 
 ---
 

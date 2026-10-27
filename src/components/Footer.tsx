@@ -4,21 +4,31 @@ import { Phone, Mail, MapPin, Shield, CheckCircle, ArrowRight } from 'lucide-rea
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-950 text-slate-400 pt-16 pb-8 border-t border-slate-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+    <footer className="relative bg-gradient-to-b from-[#132838] to-[#0c1a25] text-slate-300 pt-16 pb-8 border-t border-white/10 overflow-hidden">
+      {/* Subtle background glow */}
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#3d84ae]/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
           
-          {/* Column 1: Company Profile */}
+          {/* Column 1: Company Profile with Official Logo */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-sky-600 text-white flex items-center justify-center font-black text-xl">
-                AC
+            <div className="flex items-center gap-3.5">
+              <div className="p-1.5 rounded-2xl bg-white/15 backdrop-blur-md border border-white/20 shadow-md">
+                <img 
+                  src="/images/logo.jpg" 
+                  alt="AQUA CERAMICS" 
+                  className="h-12 w-12 object-contain rounded-xl"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = '/images/aqua_ceramics_logo.jpg';
+                  }}
+                />
               </div>
               <div>
-                <span className="text-xl font-black text-white tracking-tight font-serif-heading">
-                  AQUA CERAMICS <span className="text-sky-400 font-light text-base">LLP</span>
+                <span className="text-xl font-black text-white tracking-tight font-serif-heading flex items-center gap-2">
+                  <span>AQUA CERAMICS</span>
+                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-[#3d84ae]/30 text-[#6ba8ce] border border-[#3d84ae]/50">LLP</span>
                 </span>
-                <div className="text-[10px] font-bold text-sky-400 tracking-widest uppercase">
+                <div className="text-[10px] font-bold text-[#6ba8ce] tracking-widest uppercase">
                   DESIGNED FOR COMFORT BUILT FOR LIFE
                 </div>
               </div>
@@ -30,16 +40,16 @@ export const Footer: React.FC = () => {
             </p>
 
             <div className="space-y-2 pt-2 text-sm">
-              <a href="tel:7019254016" className="flex items-center gap-2.5 text-slate-200 hover:text-sky-400 transition-colors">
-                <Phone className="w-4 h-4 text-sky-400" />
+              <a href="tel:7019254016" className="flex items-center gap-2.5 text-slate-200 hover:text-[#6ba8ce] transition-colors">
+                <Phone className="w-4 h-4 text-[#3d84ae]" />
                 <span className="font-semibold">7019254016</span>
               </a>
-              <a href="mailto:business@aquaceramics.in" className="flex items-center gap-2.5 text-slate-200 hover:text-sky-400 transition-colors">
-                <Mail className="w-4 h-4 text-sky-400" />
+              <a href="mailto:business@aquaceramics.in" className="flex items-center gap-2.5 text-slate-200 hover:text-[#6ba8ce] transition-colors">
+                <Mail className="w-4 h-4 text-[#3d84ae]" />
                 <span>business@aquaceramics.in</span>
               </a>
               <div className="flex items-start gap-2.5 text-slate-400 text-xs pt-1">
-                <MapPin className="w-4 h-4 text-slate-500 shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#3d84ae] shrink-0 mt-0.5" />
                 <span>Corporate operations & logistics dispatch network across India.</span>
               </div>
             </div>

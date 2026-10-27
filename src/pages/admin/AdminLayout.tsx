@@ -41,18 +41,27 @@ export const AdminLayout: React.FC = () => {
       <aside className="w-full md:w-64 bg-slate-900 text-white flex-shrink-0 flex flex-col justify-between">
         <div>
           {/* Brand header */}
-          <div className="p-6 border-b border-slate-800">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-              <span className="text-[10px] uppercase font-bold tracking-widest text-sky-400">
-                Staff Control Center
+          <div className="p-6 border-b border-white/10 bg-white/5 backdrop-blur-md">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="text-[10px] uppercase font-bold tracking-widest text-sky-300">
+                Staff CRM & Leads Hub
               </span>
             </div>
-            <div className="text-lg font-serif font-bold text-white tracking-wide">
-              AQUA CERAMICS LLP
-            </div>
-            <div className="text-[11px] text-slate-400 mt-0.5">
-              Enterprise Admin Portal
+            <div className="flex items-center gap-3">
+              <img 
+                src="/images/logo.jpg" 
+                alt="Aqua Ceramics" 
+                className="w-10 h-10 rounded-xl object-contain bg-white p-0.5 border border-white/20 shadow-md shrink-0" 
+              />
+              <div>
+                <div className="text-base font-serif font-bold text-white tracking-wide leading-tight">
+                  AQUA CERAMICS
+                </div>
+                <div className="text-[10px] text-sky-200 mt-0.5 font-medium">
+                  Admin Portal & CRM
+                </div>
+              </div>
             </div>
           </div>
 

@@ -92,32 +92,35 @@ export const Bathroom3DPage: React.FC = () => {
 
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
-      {/* 3D Experience Top Control Header */}
-      <div className="border-b border-slate-800 bg-slate-900/90 backdrop-blur-md px-4 sm:px-8 py-4">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div className="min-h-screen text-[#1b3d54] py-6 sm:py-10">
+      {/* 3D Experience Top Control Header - Frosted Glass Card */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+        <div className="glass-panel p-6 rounded-3xl border border-white/80 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-              <span className="text-xs uppercase tracking-wider font-bold text-sky-400">
-                Interactive WebGL 3D Showroom
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 backdrop-blur-md border border-white/80">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+              <span className="text-[10px] uppercase tracking-wider font-extrabold text-[#3d84ae]">
+                Interactive WebGL 3D Studio
               </span>
             </div>
-            <h1 className="text-xl sm:text-2xl font-serif font-bold tracking-tight text-white mt-0.5">
+            <h1 className="text-xl sm:text-2xl font-serif font-bold tracking-tight text-[#1b3d54] mt-2">
               Aqua Ceramics Virtual Bathroom Studio
             </h1>
+            <p className="text-xs text-slate-600 mt-0.5">
+              Experience photorealistic ceramic glaze reflection, evaluate installation dimensions, and request direct commercial quotes.
+            </p>
           </div>
 
           <div className="flex items-center gap-3">
             <Link
               to="/products"
-              className="px-4 py-2 text-xs font-semibold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+              className="glass-button-secondary px-4 py-2.5 text-xs font-bold rounded-xl transition-all hover:scale-105"
             >
               Browse Catalog
             </Link>
             <Link
               to="/request-quote"
-              className="px-4 py-2 text-xs font-semibold rounded-xl bg-sky-600 hover:bg-sky-500 text-white shadow-md transition-colors"
+              className="glass-button-primary px-5 py-2.5 text-xs font-bold rounded-xl shadow-md transition-all hover:scale-105"
             >
               Request Commercial Quote
             </Link>
@@ -126,29 +129,29 @@ export const Bathroom3DPage: React.FC = () => {
       </div>
 
       {/* Main 3D Canvas Area */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* 3D Scene Viewport (Col 3) */}
           <div className="lg:col-span-3 space-y-4">
-            <div className="relative rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900">
+            <div className="relative rounded-3xl overflow-hidden border-2 border-white/70 shadow-2xl bg-slate-950">
               <Bathroom3DScene 
                 onSelectProduct={(p) => setSelectedHotspot(p)} 
                 selectedId={selectedHotspot?.id}
               />
             </div>
 
-            {/* User Interaction Tips */}
-            <div className="flex flex-wrap items-center justify-between text-xs text-slate-400 bg-slate-900/60 border border-slate-800/80 rounded-2xl px-6 py-3.5 gap-4">
+            {/* User Interaction Tips Glass Ribbon */}
+            <div className="glass-panel border border-white/80 rounded-2xl px-6 py-3.5 flex flex-wrap items-center justify-between text-xs text-slate-700 gap-4 shadow-sm">
               <div className="flex items-center gap-2">
-                <Rotate3d className="w-4 h-4 text-sky-400" />
+                <Rotate3d className="w-4 h-4 text-[#3d84ae]" />
                 <span><strong>Rotate:</strong> Drag Left Click or Touch Swipe</span>
               </div>
               <div className="flex items-center gap-2">
-                <Box className="w-4 h-4 text-teal-400" />
+                <Box className="w-4 h-4 text-[#265979]" />
                 <span><strong>Zoom:</strong> Scroll Wheel or Toolbar +/-</span>
               </div>
               <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-amber-400" />
+                <Sparkles className="w-4 h-4 text-amber-500" />
                 <span><strong>Hotspots:</strong> Tap glowing pins to inspect fixtures</span>
               </div>
             </div>
@@ -156,42 +159,42 @@ export const Bathroom3DPage: React.FC = () => {
 
           {/* Sidebar: Showroom Features & Products in Scene (Col 1) */}
           <div className="space-y-6">
-            {/* Hotspot Inspector */}
+            {/* Hotspot Inspector Glass Card */}
             {selectedHotspot ? (
-              <div className="bg-slate-900 border border-sky-500/40 rounded-2xl p-6 shadow-xl space-y-4 animate-in fade-in duration-300">
+              <div className="glass-card rounded-3xl p-6 shadow-xl space-y-4 animate-in fade-in duration-300 border-2 border-[#3d84ae]/40">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs uppercase tracking-wider font-bold text-sky-400 flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+                  <span className="text-[10px] uppercase tracking-wider font-extrabold text-[#3d84ae] flex items-center gap-1.5 bg-white/70 px-2.5 py-1 rounded-full border border-white/80">
+                    <span className="w-2 h-2 rounded-full bg-[#3d84ae] animate-pulse"></span>
                     Active Fixture
                   </span>
                   <button
                     onClick={() => setSelectedHotspot(null)}
-                    className="text-xs text-slate-400 hover:text-white px-2 py-1 rounded-md hover:bg-slate-800 transition-colors"
+                    className="text-xs text-slate-500 hover:text-slate-800 px-2 py-1 rounded-md hover:bg-white/60 transition-colors cursor-pointer"
                   >
                     Clear
                   </button>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-serif font-bold text-white">
+                  <h3 className="text-lg font-serif font-bold text-[#1b3d54]">
                     {selectedHotspot.name}
                   </h3>
-                  <div className="text-xs text-slate-400 mt-1">
-                    Model: <strong className="text-slate-200 font-mono">{selectedHotspot.code}</strong>
+                  <div className="text-xs text-slate-600 mt-1">
+                    Model: <strong className="text-[#1b3d54] font-mono">{selectedHotspot.code}</strong>
                   </div>
                 </div>
 
-                <div className="text-2xl font-bold font-sans text-sky-400">
+                <div className="text-2xl font-black font-sans text-[#3d84ae]">
                   ₹{selectedHotspot.price?.toLocaleString('en-IN')}
                 </div>
 
-                <p className="text-xs text-slate-300 leading-relaxed bg-slate-800/40 p-3 rounded-xl border border-slate-800">
+                <p className="text-xs text-slate-700 leading-relaxed glass-panel p-3.5 rounded-xl border border-white/80">
                   {selectedHotspot.specs}
                 </p>
 
-                <div className="text-xs text-slate-400 flex items-center justify-between">
+                <div className="text-xs text-slate-600 flex items-center justify-between">
                   <span>Dimensions:</span>
-                  <strong className="text-slate-200">{selectedHotspot.dimensions}</strong>
+                  <strong className="text-[#1b3d54]">{selectedHotspot.dimensions}</strong>
                 </div>
 
                 <div className="space-y-2 pt-2">
@@ -201,37 +204,37 @@ export const Bathroom3DPage: React.FC = () => {
                       code: selectedHotspot.code,
                       type: '3D Bathroom Studio'
                     })}
-                    className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-sky-600 to-sky-700 hover:from-sky-500 hover:to-sky-600 text-white py-3 rounded-xl font-bold text-xs shadow-md transition-all active:scale-[0.98] cursor-pointer"
+                    className="w-full flex items-center justify-center gap-2 glass-button-primary text-white py-3 rounded-xl font-bold text-xs shadow-md transition-all active:scale-[0.98] cursor-pointer"
                   >
                     <MessageSquare className="w-4 h-4" /> Enquire for this Fixture
                   </button>
                   <Link
                     to={`/products/${selectedHotspot.product?.id || 1}`}
-                    className="w-full flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 py-2.5 rounded-xl font-semibold text-xs border border-slate-700 transition-colors"
+                    className="w-full flex items-center justify-center gap-2 glass-button-secondary py-2.5 rounded-xl font-semibold text-xs transition-colors"
                   >
                     <Eye className="w-4 h-4" /> View Full Specifications
                   </Link>
                 </div>
               </div>
             ) : (
-              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-3">
-                <div className="flex items-center gap-2 text-sky-400 font-bold text-xs uppercase tracking-wider">
+              <div className="glass-card rounded-3xl p-6 space-y-3">
+                <div className="flex items-center gap-2 text-[#3d84ae] font-bold text-xs uppercase tracking-wider">
                   <Info className="w-4 h-4" /> Scene Explorer
                 </div>
-                <h3 className="text-base font-serif font-bold text-white">
+                <h3 className="text-base font-serif font-bold text-[#1b3d54]">
                   Click any Fixture to Inspect
                 </h3>
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <p className="text-xs text-slate-600 leading-relaxed font-light">
                   Interact with the 3D model directly or select a sanitaryware fixture below to zoom and review technical tolerance, finish options, and pricing.
                 </p>
               </div>
             )}
 
             {/* Sanitaryware Installed in this Setup (Interactive Selector) */}
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center justify-between">
+            <div className="glass-card rounded-3xl p-6 space-y-4">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-[#1b3d54] flex items-center justify-between">
                 <span>Fixtures in Concept</span>
-                <span className="text-[10px] text-sky-400 font-normal">Click to Inspect</span>
+                <span className="text-[10px] text-[#3d84ae] font-normal">Click to Inspect</span>
               </h3>
               
               <div className="space-y-2.5">
@@ -241,25 +244,25 @@ export const Bathroom3DPage: React.FC = () => {
                     <button
                       key={f.id}
                       onClick={() => handleSelectFixture(f)}
-                      className={`w-full text-left p-3.5 rounded-xl border transition-all flex items-center justify-between group ${
+                      className={`w-full text-left p-3.5 rounded-2xl border transition-all flex items-center justify-between group cursor-pointer ${
                         isSelected 
-                          ? 'bg-sky-950/70 border-sky-500 text-white shadow-md' 
-                          : 'bg-slate-800/60 border-slate-700/60 text-slate-300 hover:bg-slate-800 hover:border-slate-600'
+                          ? 'bg-[#3d84ae]/20 border-[#3d84ae] shadow-md' 
+                          : 'bg-white/50 border-white/60 hover:bg-white/80 hover:border-white'
                       }`}
                     >
                       <div>
-                        <div className="text-xs font-bold text-white group-hover:text-sky-300 transition-colors">
+                        <div className="text-xs font-bold text-[#1b3d54] group-hover:text-[#3d84ae] transition-colors">
                           {f.name}
                         </div>
-                        <div className="text-[10px] text-slate-400 mt-0.5">
+                        <div className="text-[10px] text-slate-500 mt-0.5">
                           Model: <span className="font-mono">{f.code}</span>
                         </div>
                       </div>
                       <div className="text-right">
-                        <span className="text-xs font-bold text-sky-400 block">
+                        <span className="text-xs font-bold text-[#3d84ae] block">
                           ₹{f.price.toLocaleString('en-IN')}
                         </span>
-                        <span className="text-[10px] text-slate-500 group-hover:text-slate-300">
+                        <span className="text-[10px] text-slate-500 group-hover:text-[#1b3d54]">
                           Inspect &rarr;
                         </span>
                       </div>
@@ -270,23 +273,23 @@ export const Bathroom3DPage: React.FC = () => {
             </div>
 
             {/* Architectural Consultation Card */}
-            <div className="bg-gradient-to-br from-sky-950 to-slate-900 border border-sky-800/40 rounded-2xl p-6 text-slate-200 space-y-3">
+            <div className="relative overflow-hidden rounded-3xl p-6 text-white space-y-3 bg-gradient-to-br from-[#1b3d54] via-[#265979] to-[#3d84ae] shadow-xl border border-white/20">
               <h4 className="font-serif font-bold text-white text-base">Custom Bathroom Layouts</h4>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Planning a hotel, residential villa development, or commercial master plan? Connect directly with Aqua Ceramics engineering team.
+              <p className="text-xs text-sky-100 leading-relaxed font-light">
+                Planning a luxury villa, residential development, or commercial master plan? Connect directly with Aqua Ceramics engineering team.
               </p>
-              <div className="pt-1 flex flex-col gap-2">
+              <div className="pt-2 flex flex-col gap-2">
                 <Link
                   to="/request-quote"
-                  className="w-full text-center px-4 py-2.5 bg-sky-600 hover:bg-sky-500 text-white rounded-xl text-xs font-bold transition-colors"
+                  className="w-full text-center px-4 py-2.5 bg-white text-[#1b3d54] hover:bg-[#fef4e9] rounded-xl text-xs font-bold transition-all shadow-md hover:scale-105 cursor-pointer"
                 >
                   Request Bulk Quotation
                 </Link>
                 <a
                   href="tel:7019254016"
-                  className="w-full flex items-center justify-center gap-2 text-center px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-medium border border-slate-700 transition-colors"
+                  className="w-full flex items-center justify-center gap-2 text-center px-4 py-2 bg-white/15 hover:bg-white/25 text-white rounded-xl text-xs font-medium border border-white/30 backdrop-blur-md transition-colors"
                 >
-                  <PhoneCall className="w-3.5 h-3.5 text-sky-400" /> Call 7019254016
+                  <PhoneCall className="w-3.5 h-3.5 text-sky-200" /> Direct Desk: 7019254016
                 </a>
               </div>
             </div>

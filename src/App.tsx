@@ -45,15 +45,24 @@ const ScrollToTop: React.FC = () => {
   return null;
 };
 
-// Customer Layout with persistent Header and Footer
+// Customer Layout with persistent Header and Footer & Glassmorphism Ambient Glow
 const CustomerLayout: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-slate-50 text-slate-900">
-      <Header />
-      <main className="flex-1">
-        <Outlet />
-      </main>
-      <Footer />
+    <div className="min-h-screen flex flex-col font-sans relative bg-[#fdfaf5] text-slate-800 selection:bg-[#3d84ae]/20 selection:text-[#1b3d54] overflow-x-hidden">
+      {/* Ambient Glassmorphism Glow Orbs */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute -top-32 -left-32 w-[30rem] h-[30rem] rounded-full bg-[#3d84ae]/15 blur-3xl ambient-orb-1"></div>
+        <div className="absolute top-1/4 -right-28 w-[36rem] h-[36rem] rounded-full bg-[#f8e5d0]/50 blur-3xl ambient-orb-2"></div>
+        <div className="absolute top-2/3 left-1/6 w-[32rem] h-[32rem] rounded-full bg-[#6ba8ce]/15 blur-3xl ambient-orb-1"></div>
+        <div className="absolute -bottom-20 right-1/4 w-[28rem] h-[28rem] rounded-full bg-[#3d84ae]/10 blur-3xl ambient-orb-2"></div>
+      </div>
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };
