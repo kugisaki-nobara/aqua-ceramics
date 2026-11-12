@@ -27,12 +27,25 @@ function initDatabase() {
       material_finish TEXT,
       key_features TEXT,
       image_url TEXT,
+      source_ref TEXT,
       is_featured INTEGER DEFAULT 0,
       is_published INTEGER DEFAULT 1,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
   `);
+
+  try {
+    db.exec(`ALTER TABLE products ADD COLUMN source_ref TEXT;`);
+  } catch (e) {
+    // Column already exists
+  }
+
+  try {
+    db.exec(`ALTER TABLE products ADD COLUMN updated_at DATETIME DEFAULT CURRENT_TIMESTAMP;`);
+  } catch (e) {
+    // Column already exists
+  }
 
   // Categories table
   db.exec(`

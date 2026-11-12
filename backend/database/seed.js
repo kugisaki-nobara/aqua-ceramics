@@ -473,6 +473,12 @@ function seedDatabase() {
     console.log('Seeded commercial quotation requests.');
   }
 
+  try {
+    require('./rebuild_source_catalog');
+  } catch (err) {
+    console.error('Error invoking source products seed:', err);
+  }
+
   console.log('Database seeding complete.');
 }
 

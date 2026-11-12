@@ -188,11 +188,21 @@ Tagline: DESIGNED FOR COMFORT BUILT FOR LIFE
             {/* Left: Product Image & Gallery */}
             <div className="space-y-4">
               <div className="relative rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 aspect-square flex items-center justify-center p-6">
-                <img
-                  src={product.image_url}
-                  alt={product.name}
-                  className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
-                />
+                {product.image_url ? (
+                  <img
+                    src={product.image_url}
+                    alt={product.name}
+                    className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <div className="flex flex-col items-center justify-center text-center p-8 border-2 border-dashed border-slate-300 rounded-xl bg-slate-50/80">
+                    <Box className="w-12 h-12 text-slate-300 mb-3" />
+                    <span className="text-base font-bold text-slate-700 mb-1">Image to be attached</span>
+                    <span className="text-xs text-slate-500 max-w-sm">
+                      {product.source_ref || 'Reference page in manufacturer catalog'}
+                    </span>
+                  </div>
+                )}
                 {isDiscounted && (
                   <div className="absolute top-4 left-4 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
                     {discountPercent}% Off Promo
@@ -241,6 +251,12 @@ Tagline: DESIGNED FOR COMFORT BUILT FOR LIFE
                   <span className="text-xs text-slate-500 font-mono">
                     Model: <strong className="text-slate-800">{product.code}</strong>
                   </span>
+                  {product.source_ref && (
+                    <span className="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                      <FileText className="w-3 h-3 text-emerald-600" />
+                      Ref: {product.source_ref}
+                    </span>
+                  )}
                 </div>
 
                 <h1 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 tracking-tight mb-4">
@@ -249,15 +265,26 @@ Tagline: DESIGNED FOR COMFORT BUILT FOR LIFE
 
                 {/* Pricing Block */}
                 <div className="flex items-baseline gap-4 mb-4">
-                  <span className="text-3xl font-extrabold text-slate-950 font-sans">
-                    ₹{effectivePrice.toLocaleString('en-IN')}
-                  </span>
-                  {isDiscounted && (
-                    <span className="text-lg text-slate-400 line-through">
-                      ₹{product.price.toLocaleString('en-IN')}
-                    </span>
+                  {product.price > 0 ? (
+                    <>
+                      <span className="text-3xl font-extrabold text-slate-950 font-sans">
+                        ₹{effectivePrice.toLocaleString('en-IN')}
+                      </span>
+                      {isDiscounted && (
+                        <span className="text-lg text-slate-400 line-through">
+                          ₹{product.price.toLocaleString('en-IN')}
+                        </span>
+                      )}
+                      <span className="text-xs text-slate-500">(Printed List/MRP)</span>
+                    </>
+                  ) : (
+                    <div>
+                      <span className="inline-block text-lg font-bold text-amber-800 bg-amber-50 px-3.5 py-1.5 rounded-lg border border-amber-200">
+                        Price not listed
+                      </span>
+                      <span className="block text-xs text-slate-500 mt-1">Available via formal B2B project quotation</span>
+                    </div>
                   )}
-                  <span className="text-xs text-slate-500">(Includes applicable taxes & standard freight)</span>
                 </div>
 
                 {/* Stock Status */}
@@ -377,6 +404,14 @@ Tagline: DESIGNED FOR COMFORT BUILT FOR LIFE
               <span className="text-slate-500 font-medium">Static Load Bearing</span>
               <span className="text-slate-900 font-bold">Tested up to 400 kg</span>
             </div>
+            {product.source_ref && (
+              <div className="p-4 rounded-xl bg-emerald-50/60 border border-emerald-200/80 flex justify-between items-center md:col-span-2">
+                <span className="text-emerald-900 font-medium flex items-center gap-1.5">
+                  <FileText className="w-4 h-4 text-emerald-600" /> Source Catalog Document
+                </span>
+                <span className="text-emerald-900 font-bold font-mono text-xs">{product.source_ref}</span>
+              </div>
+            )}
           </div>
         </div>
 

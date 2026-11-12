@@ -16,7 +16,18 @@
 # next.js
 /.next/
 /out/
+# Local database files
+*.db
+*.db-shm
+*.db-wal
 
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies and build output
+node_modules/
 # production
 /build
 

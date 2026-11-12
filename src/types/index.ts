@@ -14,6 +14,7 @@ export interface Product {
   material_finish?: string;
   key_features?: string[] | string;
   image_url: string;
+  source_ref?: string;
   is_featured: number;
   is_published: number;
   created_at?: string;

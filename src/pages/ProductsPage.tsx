@@ -29,7 +29,7 @@ export const ProductsPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
   const [searchQuery, setSearchQuery] = useState<string>(initialSearch);
   const [sortBy, setSortBy] = useState<string>('featured');
-  const [maxPrice, setMaxPrice] = useState<number>(30000);
+  const [maxPrice, setMaxPrice] = useState<number>(200000);
   const [onlyInStock, setOnlyInStock] = useState<boolean>(false);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState<boolean>(false);
 
@@ -82,7 +82,7 @@ export const ProductsPage: React.FC = () => {
   const resetFilters = () => {
     setSelectedCategory('All');
     setSearchQuery('');
-    setMaxPrice(30000);
+    setMaxPrice(200000);
     setOnlyInStock(false);
     setSortBy('featured');
     searchParams.delete('category');
@@ -251,16 +251,16 @@ export const ProductsPage: React.FC = () => {
                 </label>
                 <input
                   type="range"
-                  min="2000"
-                  max="35000"
-                  step="500"
+                  min="300"
+                  max="200000"
+                  step="1000"
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(Number(e.target.value))}
                   className="w-full accent-sky-600 h-1.5 bg-slate-200 rounded-lg cursor-pointer"
                 />
                 <div className="flex justify-between text-[11px] text-slate-400 mt-1">
-                  <span>₹2,000</span>
-                  <span>₹35,000</span>
+                  <span>₹300</span>
+                  <span>₹2,00,000</span>
                 </div>
               </div>
 

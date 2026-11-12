@@ -21,7 +21,11 @@ router.post('/', (req, res) => {
       return res.status(400).json({ success: false, message: 'Name is required.' });
     }
     if (!phone || !phone.trim()) {
-      return res.status(400).json({ success: false, message: 'Phone number is required.' });
+      return res.status(400).json({ success: false, message: 'Phone number is required and must be exactly 10 digits.' });
+    }
+    const cleanPhone = phone.trim();
+    if (!/^\d{10}$/.test(cleanPhone)) {
+      return res.status(400).json({ success: false, message: 'Phone number must be exactly 10 numeric digits.' });
     }
     if (!message || !message.trim()) {
       return res.status(400).json({ success: false, message: 'Enquiry message cannot be empty.' });

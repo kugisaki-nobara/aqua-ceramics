@@ -22,6 +22,7 @@ export const RequestQuotePage: React.FC = () => {
   const [name, setName] = useState<string>('');
   const [firmName, setFirmName] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
+  const [phoneError, setPhoneError] = useState<string | null>(null);
   const [email, setEmail] = useState<string>('');
   const [city, setCity] = useState<string>('');
   const [message, setMessage] = useState<string>('');
@@ -39,8 +40,26 @@ export const RequestQuotePage: React.FC = () => {
       .catch((err) => console.error(err));
   }, []);
 
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value;
+    const digits = raw.replace(/\D/g, '').slice(0, 10);
+    setPhone(digits);
+    if (phoneError && digits.length === 10) {
+      setPhoneError(null);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!phone) {
+      setPhoneError('Contact phone number is required.');
+      return;
+    }
+    if (!/^\d{10}$/.test(phone)) {
+      setPhoneError(`Phone number must be exactly 10 digits (currently ${phone.length}).`);
+      return;
+    }
+    setPhoneError(null);
     setSubmitting(true);
 
     const prodIdNum = Number(selectedProductId);
@@ -224,16 +243,31 @@ export const RequestQuotePage: React.FC = () => {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
-                    Contact Phone *
+                    Contact Phone * <span className="font-normal text-slate-400 lowercase">(10 digits)</span>
                   </label>
                   <input
                     type="tel"
+                    inputMode="numeric"
+                    pattern="[0-9]{10}"
+                    maxLength={10}
                     required
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={handlePhoneChange}
+                    onBlur={() => {
+                      if (!phone) setPhoneError('Contact phone is required.');
+                      else if (phone.length !== 10) setPhoneError(`Must be exactly 10 digits (currently ${phone.length}).`);
+                      else setPhoneError(null);
+                    }}
                     placeholder="e.g. 9876543210"
-                    className="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500"
+                    className={`w-full px-4 py-2.5 text-sm bg-slate-50 border rounded-xl focus:ring-2 focus:bg-white font-mono tracking-wider ${
+                      phoneError ? 'border-rose-400 focus:ring-rose-400 bg-rose-50/50' : 'border-slate-300 focus:ring-sky-500'
+                    }`}
                   />
+                  {phoneError ? (
+                    <p className="text-[11px] text-rose-600 mt-1 font-medium">{phoneError}</p>
+                  ) : (
+                    <p className="text-[11px] text-slate-400 mt-1">10 numeric digits ({phone.length}/10).</p>
+                  )}
                 </div>
 
                 <div>

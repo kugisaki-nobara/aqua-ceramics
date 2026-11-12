@@ -41,13 +41,30 @@ export const EnquiryDrawer: React.FC = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    if (name === 'phone') {
+      // Accept only numeric digits, max 10
+      const digitsOnly = value.replace(/\D/g, '').slice(0, 10);
+      setFormData(prev => ({ ...prev, phone: digitsOnly }));
+      if (error && digitsOnly.length === 10) {
+        setError(null);
+      }
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name.trim() || !formData.phone.trim()) {
-      setError('Please provide your name and phone number.');
+    if (!formData.name.trim()) {
+      setError('Please provide your name.');
+      return;
+    }
+    if (!formData.phone.trim()) {
+      setError('Please provide your contact phone number.');
+      return;
+    }
+    if (!/^\d{10}$/.test(formData.phone.trim())) {
+      setError(`Contact number must be exactly 10 numeric digits (currently ${formData.phone.trim().length}).`);
       return;
     }
 
@@ -237,17 +254,23 @@ export const EnquiryDrawer: React.FC = () => {
 
                       <div>
                         <label className="block text-xs font-semibold text-[#1b3d54] mb-1">
-                          Phone Number *
+                          Phone Number * <span className="font-normal text-slate-400 text-[10px]">(10 digits)</span>
                         </label>
                         <input
                           type="tel"
+                          inputMode="numeric"
+                          pattern="[0-9]{10}"
+                          maxLength={10}
                           name="phone"
                           required
                           value={formData.phone}
                           onChange={handleChange}
                           placeholder="10-digit mobile number"
-                          className="w-full px-3.5 py-2.5 glass-input rounded-xl text-xs text-slate-900 focus:outline-[#3d84ae]"
+                          className="w-full px-3.5 py-2.5 glass-input rounded-xl text-xs text-slate-900 font-mono tracking-wider focus:outline-[#3d84ae]"
                         />
+                        <span className="text-[10px] text-slate-400 mt-0.5 block">
+                          {formData.phone ? `${formData.phone.length}/10 digits` : 'Numbers only, no spaces'}
+                        </span>
                       </div>
                     </div>
 

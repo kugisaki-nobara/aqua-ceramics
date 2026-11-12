@@ -51,6 +51,64 @@ export const Bathroom3DPage: React.FC = () => {
     }
   ];
 
+  const complementaryFittings = [
+    {
+      id: 'faucet-nero',
+      code: 'AGL-303212BL',
+      name: 'AGL Nero Single Lever Basin Mixer (Matte Black)',
+      category: 'Bath Fittings & Faucets',
+      price: 11440,
+      specs: 'Solid forged brass 25mm ceramic cartridge mixer with electroplated Matte Black finish and Neoperl Swiss aerator.',
+      image_url: '/images/products/source_extracted/agl_nero_basin_mixer.png',
+      source_ref: 'AGL SEP 26 Faucet Pricelist.pdf, Page 4',
+      dimensions: 'Spout Reach: 120 mm | Height: 165 mm'
+    },
+    {
+      id: 'drain-grating',
+      code: 'GRT-TIL-S-13024',
+      name: 'Freshco SS 304 Tile Insert Channel Grating 4"x24"',
+      category: 'Showers & Drain Systems',
+      price: 6850,
+      specs: 'Linear architectural shower drain channel fabricated from AISI 304 stainless steel with reversible tile insert tray and cockroach trap.',
+      image_url: '/images/products/source_extracted/freshco_ss304_channel_grating.png',
+      source_ref: 'FRESHCO CATALOG_AUGUST 26_VOL 1.pdf, Page 5',
+      dimensions: '100 x 600 mm (4" x 24")'
+    },
+    {
+      id: 'shower-prism',
+      code: 'CS-SS4-2022',
+      name: 'Freshco Prism SS304 4-Function Ceiling Shower',
+      category: 'Showers & Drain Systems',
+      price: 51000,
+      specs: 'Flagship 22"x20" flush-ceiling shower with Rain, Dual Waterfall, Mist, and Column hydrotherapy functions.',
+      image_url: '/images/products/source_extracted/freshco_ceiling_shower_prism.png',
+      source_ref: 'FRESHCO CATALOG_AUGUST 26_VOL 1.pdf, Page 9',
+      dimensions: '550 x 500 mm (22" x 20")'
+    },
+    {
+      id: 'slab-calacatta',
+      code: 'ALITO-ACC-CAL-INCISE',
+      name: 'Alito Accord Calacatta Incise Porcelain Slab',
+      category: 'Sintered Stone & Porcelain Slabs',
+      price: 52000,
+      specs: 'Monolithic 1600x3200mm sintered porcelain slab in 20mm thickness. Scratch, thermal shock, and stain proof.',
+      image_url: '/images/products/source_extracted/alito_calacatta_incise_slab.png',
+      source_ref: 'ALITO_2026-Catalog.pdf, Page 13',
+      dimensions: '1600 x 3200 x 20 mm'
+    },
+    {
+      id: 'water-softener',
+      code: 'ZB-AS2-2000LPH',
+      name: 'Zero B AutoSoft 2 Water Softener (2000 LPH)',
+      category: 'Water Treatment & Softeners',
+      price: 68500,
+      specs: 'Automated 2000 L/hr whole-villa water softener with 40kg salt tank and 25L resin. Prevents scaling on bathroom fittings.',
+      image_url: '/images/products/source_extracted/zerob_autosoft_as2_main.png',
+      source_ref: 'zerob-as2-water-softener-2000-lph.pdf, Page 2',
+      dimensions: '330 x 470 x 1100 mm'
+    }
+  ];
+
   const handleSelectFixture = (f: typeof fixtureList[0]) => {
     const mockProduct: Product = {
       id: f.id === 'ewc' ? 1 : f.id === 'basin' ? 5 : 9,
@@ -269,6 +327,74 @@ export const Bathroom3DPage: React.FC = () => {
                     </button>
                   );
                 })}
+              </div>
+
+              {/* Complementary Specified Fittings Section */}
+              <div className="pt-4 border-t border-slate-200/60">
+                <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-2 flex items-center justify-between">
+                  <span>Specified Concept Fittings</span>
+                  <span className="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">2D Spec Sheets</span>
+                </h4>
+                <p className="text-[11px] text-slate-500 mb-3">
+                  Architectural fittings and materials specified from manufacturer documents:
+                </p>
+                <div className="space-y-2">
+                  {complementaryFittings.map((cf) => {
+                    const isSelected = selectedHotspot?.code === cf.code;
+                    return (
+                      <button
+                        key={cf.id}
+                        onClick={() => {
+                          const mockProd: Product = {
+                            id: 100,
+                            code: cf.code,
+                            name: cf.name,
+                            category: cf.category,
+                            brand: 'Aqua Ceramics Approved',
+                            price: cf.price,
+                            stock: 20,
+                            availability: 'In Stock',
+                            description: cf.specs,
+                            dimensions: cf.dimensions,
+                            image_url: cf.image_url,
+                            source_ref: cf.source_ref,
+                            is_featured: 1,
+                            is_published: 1
+                          };
+                          setSelectedHotspot({
+                            id: cf.id,
+                            name: cf.name,
+                            code: cf.code,
+                            category: cf.category,
+                            price: cf.price,
+                            position: new THREE.Vector3(0, 1, 0),
+                            specs: cf.specs,
+                            dimensions: cf.dimensions,
+                            product: mockProd
+                          });
+                        }}
+                        className={`w-full text-left p-2.5 rounded-xl border transition-all flex items-center gap-3 cursor-pointer ${
+                          isSelected
+                            ? 'bg-[#3d84ae]/20 border-[#3d84ae]'
+                            : 'bg-white/40 border-white/60 hover:bg-white/70'
+                        }`}
+                      >
+                        <img 
+                          src={cf.image_url} 
+                          alt={cf.name} 
+                          className="w-10 h-10 object-cover rounded-lg border border-slate-200 bg-white flex-shrink-0" 
+                        />
+                        <div className="flex-1 min-w-0">
+                          <div className="text-[11px] font-bold text-slate-800 truncate">{cf.name}</div>
+                          <div className="text-[10px] text-emerald-700 font-mono">{cf.code}</div>
+                        </div>
+                        <div className="text-right text-[11px] font-bold text-[#3d84ae]">
+                          ₹{cf.price.toLocaleString('en-IN')}
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
             </div>
 

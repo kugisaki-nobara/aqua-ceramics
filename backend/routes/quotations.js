@@ -20,6 +20,11 @@ router.post('/', (req, res) => {
       return res.status(400).json({ success: false, message: 'Customer name, phone, and inquiry message are required.' });
     }
 
+    const cleanPhone = customer_phone.trim();
+    if (!/^\d{10}$/.test(cleanPhone)) {
+      return res.status(400).json({ success: false, message: 'Phone number must be exactly 10 numeric digits.' });
+    }
+
     const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
     const randomSuffix = Math.floor(1000 + Math.random() * 9000);
     const quoteRef = `AQUA-QT-${dateStr}-${randomSuffix}`;
